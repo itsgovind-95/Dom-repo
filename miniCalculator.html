@@ -1,0 +1,43 @@
+<!DOCTYPE >
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input id="first-number" type="number" placeholder="Enter first number" />
+    <input id="second-number" type="number" placeholder="Enter second number" />
+        <h2 id="display"></h2>
+    <button onclick="add()">Add</button>
+    <button onclick="sub()">Subtract</button>
+    <button onclick="multi()">Multiply</button>
+    <button onclick="divide()">Divide</button>
+</body>
+<script>
+    let num1 = document.getElementById("first-number");
+    let num2 = document.getElementById("second-number");
+    let display = document.getElementById("display");
+
+    function add(){
+        display.textContent = +num1.value + +num2.value;
+    }
+    function sub(){
+        display.textContent = +num1.value - +num2.value;
+    }
+    function multi(){
+        display.textContent = +num1.value * +num2.value;
+    
+    }
+    function divide(){
+        if(num1.value > 0){
+            if(num2.value > 0){
+                display.textContent = +num1.value / +num2.value;
+            } else {
+                alert('Error! Division by zero is not allowed');
+            }
+        } else {
+            alert('Error! Dividend must be greater than zero')
+        }
+    }
+</script>
+</html>
