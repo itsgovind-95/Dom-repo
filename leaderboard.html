@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: #f2f2f2;
+            font-weight: bold;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        #main-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            height: auto;
+        }
+        p {
+            font-size: 20px;
+        }
+        .min-max-score {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+        }
+        #min-score {
+            margin-right: 50px;
+            text-align: center;
+            
+        }
+        #max-score {
+            margin-left: 50px;
+            text-align: center;
+        }
+
+        .min {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 80px;
+            height: 50px;
+            background-color: red;
+            border: 2px solid black;
+        }
+        .max {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 80px;
+            height: 50px;
+            background-color: green;
+            border: 2px solid black;
+        }
+        #display-score{
+            text-align: center;
+        }
+        .display {
+            border: 2px solid black;
+            width: 170px;
+            height: 50px;
+            margin-bottom: 15px;
+            background-color: gray;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .number-keys {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+        .number-keys > button {
+            border: 2px solid black;
+            width: 50px;
+            height: 50px;
+         }
+         .key {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+         }
+         #key-0{
+            grid-column: 2;
+         }
+         .enter {
+            width: 180px;
+            padding: 10px;
+            margin-top: 10px;
+            border: 2px solid black;
+            background-color: black;
+            color: wheat;
+            font-size: 18px;
+         }
+         .number-keys :nth-child(1),
+         .number-keys :nth-child(3),
+         .number-keys :nth-child(7),
+         .number-keys :nth-child(9){
+            background-color: seagreen;
+         }
+         .number-keys :nth-child(2),
+         .number-keys :nth-child(4),
+         .number-keys :nth-child(5),
+         .number-keys :nth-child(6),
+         .number-keys :nth-child(8) {
+            background-color: rgb(236, 120, 43);
+         }
+         .number-keys :nth-child(10) {
+            background-color: rgb(75, 8, 137);
+         }
+        
+    </style>
+</head>
+<body>
+    <div id="main-container">
+        <div class="min-max-score">
+            <div id="min-score">
+                <div class="min"><p id="min-score-value">43</p></div>
+                <p>Min</p>   
+            </div>
+            <div id="max-score">
+                <div class="max"><p id="max-score-value">2019</p></div>
+                <p>Max</p>
+            </div>
+            
+        </div>
+        <div id="display-score">
+            <p>Score</p>
+            <div class="display"><p id="display-value">#</p></div>
+        </div>
+        <div class="number-keys">
+            <button class="key">1</button>
+            <button class="key">2</button>
+            <button class="key">3</button>
+            <button class="key">4</button>
+            <button class="key">5</button>
+            <button class="key">6</button>
+            <button class="key">7</button>
+            <button class="key">8</button>
+            <button class="key">9</button>
+            <button id="key-0" class="key">0</button>
+        </div>
+        <button class="enter">Enter</button>
+    </div>
+</body>
+<script>
+    let display = document.getElementById("display-value");
+    let minScore = document.getElementById("min-score-value");
+    let maxScore = document.getElementById("max-score-value");
+    let enter = document.querySelector(".enter")
+
+    let numberKey = document.querySelectorAll(".key")
+    let value = '';
+    numberKey.forEach((keys) =>{
+        keys.addEventListener("click", () =>{
+                value += keys.textContent;
+                display.textContent = value;
+        })
+    })
+    
+    enter.addEventListener("click", ()=>{
+        let score = parseInt(display.textContent);
+        if (score >= 43 && score <= 2019) {
+            minScore.textContent = score;
+            display.textContent = "#";
+            value = '';
+        } else {
+            alert("Invalid score");
+        }
+    })
+</script>
+</html>
